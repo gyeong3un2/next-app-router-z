@@ -1,0 +1,37 @@
+.main {
+  width: 600px;
+  border-color: rgb(239, 243, 244);
+  border-right-width: 1px;
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-right-style: solid;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.header {
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  display: flex;
+  height: 53px;
+  width: 598px;
+  align-items: center;
+}
+@media (prefers-color-scheme: dark) {
+  .haeder {
+      background-color: rgba(0, 0, 0, 0.65);
+  }
+}
+
+.headerTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+.headerBox {
+  margin-top: 53px;
+}

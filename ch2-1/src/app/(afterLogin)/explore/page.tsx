@@ -1,6 +1,6 @@
 import style from './explore.module.css';
-import SearchForm from '../_component/SearchForm';
-import Trend from '../_component/Trend';
+import SearchForm from '../_component/rightSection/SearchForm';
+import Trend from '../_component/rightSection/Trend';
 
 export default function Home() {
   return (

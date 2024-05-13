@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import BackButton from '../_component/BackButton';
+import BackButton from '../_component/common/BackButton';
 import Post from '../_component/Home/Post';
 import style from './profile.module.css';
 

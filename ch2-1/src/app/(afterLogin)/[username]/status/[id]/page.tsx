@@ -1,4 +1,4 @@
-import BackButton from '@/app/(afterLogin)/_component/BackButton';
+import BackButton from '@/app/(afterLogin)/_component/common/BackButton';
 import style from './singlePost.module.css';
 import Post from '@/app/(afterLogin)/_component/Home/Post';
 import CommentForm from './_component/CommentForm';

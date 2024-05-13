@@ -1,6 +1,6 @@
-import BackButton from '../_component/BackButton';
+import BackButton from '../_component/common/BackButton';
 import Post from '../_component/Home/Post';
-import SearchForm from '../_component/SearchForm';
+import SearchForm from '../_component/rightSection/SearchForm';
 import Tab from './_component/Tab';
 import style from './search.module.css';
 

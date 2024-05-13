@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import style from './trendSection.module.css';
-import Trend from '@/app/(afterLogin)/_component/Trend';
+import Trend from '@/app/(afterLogin)/_component/rightSection/Trend';
 
 export default function TrendSection() {
   const pathname = usePathname();

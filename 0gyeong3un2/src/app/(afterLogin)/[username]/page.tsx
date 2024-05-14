@@ -1,39 +1,44 @@
-/* eslint-disable @next/next/no-img-element */
-import BackButton from '../_component/common/BackButton';
-import Post from '../_component/Home/Post';
+import {
+  HydrationBoundary,
+  QueryClient,
+  dehydrate,
+} from '@tanstack/react-query';
 import style from './profile.module.css';
+import { getUser } from './_lib/getUser';
+import { getUserPosts } from './_lib/getUserPosts';
+import UserPosts from './_component/UserPosts';
+import UserInfo from './_component/UserInfo';
+import { auth } from '@/auth';
 
-export default function Profile() {
-  const user = {
-    id: 'zerohch0',
-    nickname: '제로초',
-    image: '/5Udwvqim.jpg',
+type Props = {
+  params: {
+    username: string;
   };
+};
+
+export default async function Profile({ params }: Props) {
+  const { username } = params;
+  const session = await auth();
+
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ['users', username],
+    queryFn: getUser,
+  });
+  await queryClient.prefetchQuery({
+    queryKey: ['posts', 'users', username],
+    queryFn: getUserPosts,
+  });
+  const hydratedState = dehydrate(queryClient);
 
   return (
     <main className={style.main}>
-      <div className={style.header}>
-        <BackButton />
-        <h3 className={style.headerTitle}>{user.nickname}</h3>
-      </div>
-      <div className={style.userZone}>
-        <div className={style.userImage}>
-          <img src={user.image} alt={user.id} />
+      <HydrationBoundary state={hydratedState}>
+        <UserInfo username={username} session={session} />
+        <div>
+          <UserPosts username={username} />
         </div>
-        <div className={style.userName}>
-          <div>{user.nickname}</div>
-          <div>@{user.id}</div>
-        </div>
-        <button className={style.followButton}>팔로우</button>
-      </div>
-      <div>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-      </div>
+      </HydrationBoundary>
     </main>
   );
 }
